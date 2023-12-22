@@ -1,47 +1,31 @@
 import React from "react";
 import "./ProductCard.css";
-import { Link } from "react-router-dom";
-import { Rate, Space } from "antd";
 
-const ProductCard = ({ data }) => {
-  // console.log("data", data);
-  const desc = ["Rất tệ", "Tệ", "Bình thường", "Tốt", "Rất tốt"];
-
+const ProductCard = ({data}) => {
   return (
-    <div className="productCard w-[15rem] m-3 transition-all cursor-pointer border border-gray-300">
-      <Link to={`/product/${data.id}`}>
+    <div className="productCard w-[15rem] m-3 transition-all cursor-pointer">
+      <div className="">
+        <img
+          className="h-full w-full object-cover"
+          src={data.imageUrl}
+          alt={data.imageUrl}
+        />
+      </div>
+
+      <div className="textPart bg-white p-3">
         <div className="">
-          <img
-            className="h-full w-full object-cover"
-            src={data?.productImage}
-            alt={data?.productImage}
-          />
+          <p className="font-bold opacity-60">
+            {data.title}
+          </p>
+          <p>{data.brand}</p>
         </div>
 
-        <div className="textPart bg-white p-2">
-          <div className="text-left">
-            <Space className="configStar">
-              <>
-                <Rate tooltips={desc} disabled value={data?.rating} allowHalf />
-              </>
-            </Space>
-            <span className="float-right">Sold: {data?.sold}</span>
-          </div>
-          <div className="text-left">
-            <p className="font-semibold">{data?.name}</p>
-          </div>
-
-          <div className="flex items-center space-x-2 text-left">
-            <span className="text-red-600">Giá:</span>
-            <span className="text-red-600">
-              {parseFloat(data?.estimatedPrice)?.toLocaleString("vi-VN", {
-                style: "currency",
-                currency: "VND",
-              })}
-            </span>
-          </div>
+        <div className="flex items-center justify-center space-x-2">
+          <p className="font-semibold">150.000đ</p>
+          <p className="line-through opacity-50">250.000đ</p>
+          <p className="text-green-600 font-semibold">-40%</p>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

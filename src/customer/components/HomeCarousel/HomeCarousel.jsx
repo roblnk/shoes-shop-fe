@@ -12,7 +12,6 @@ const HomeCarousel = () => {
       path={item.path}
       role="presentation"
       alt="item-presentation"
-      style={{ height: "600px", width: "100%" }}
     />
   ));
 

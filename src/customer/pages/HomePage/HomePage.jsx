@@ -1,47 +1,21 @@
 import React from "react";
 import HomeCarousel from "../../components/HomeCarousel/HomeCarousel";
-import { useQuery, keepPreviousData } from "@tanstack/react-query";
-import * as ProductService from "../../../services/ProductService";
-import ProductCard from "../../components/Product/ProductCard";
-import FooterHomePage from "../../components/CustomLayout/FooterHomePage";
-import MultiCarousel from "../../components/MultiCarousel/MultiCarousel";
+import HomeSectionCarousel from "../../components/HomeSectionCarousel/HomeSectionCarousel";
+import { tShirt } from "../../../Data/t-shirt";
+import { jacket } from "../../../Data/jacket";
 
 HomePage.propTypes = {};
 
 function HomePage(props) {
-  // const fetchProductAll = async () => {
-  //   const res = await ProductService.getAllProduct();
-  //   return res;
-  // };
-
-  // // const data = fetchProductAll()
-  // // console.log(data);
-
-  // const { data: products, isSuccess } = useQuery({
-  //   queryKey: ["products"],
-  //   queryFn: () => fetchProductAll(),
-  // });
-
   return (
     <div className="">
       <HomeCarousel />
 
-      <div className="py-10">
-        {/* Smililer Products */}
-        <section className="text-xl text-left ml-8 font-semibold">
-          Sản phẩm bán được nhiều
-        </section>
-        <hr class="mb-2 ml-8 mr-8 mt-1 border-t border-gray-300" />
-        <MultiCarousel homePage={true} />
-
-        {/* High Rating Products */}
-        <section className="text-xl text-left ml-8 font-semibold">
-          Sản phẩm được đánh giá cao
-        </section>
-        <hr class=" mb-2 ml-8 mr-8 mt-1 border-t border-gray-300" />
-        <MultiCarousel homePage={true} />
+      <div className="space-y-10 py-10 px-5 lg:px-10">
+        <HomeSectionCarousel data={tShirt} />
+        <HomeSectionCarousel data={jacket}/>
       </div>
-      <FooterHomePage />
+      
     </div>
   );
 }
